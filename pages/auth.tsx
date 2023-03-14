@@ -1,7 +1,9 @@
-import Input from "@/components/input";
+import Input from "@/components/Input";
+import { useState } from "react";
 
 
-export default function Auth() {
+const  Auth = () => {
+    const [email, setEmial] = useState('');
     return (
         <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
            <div className="bg-black w-full h-full lg:bg-opacity-50 ">
@@ -14,7 +16,13 @@ export default function Auth() {
                             sing in
                         </h2>
                         <div className="flex flex-col gap-4">
-                            <Input />
+                            <Input
+                            label="Email"
+                            onChange={(ev) => setEmial(ev.target.value)}
+                            id="email"
+                            type="email"
+                            value={email}
+                            />
                         </div>
                     </div>
                 </div>
@@ -22,3 +30,5 @@ export default function Auth() {
         </div>
     )
 }
+
+export default Auth;
