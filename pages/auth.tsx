@@ -6,7 +6,7 @@ import { useCallback, useState } from "react";
 
 const  Auth = () => {
     const [email, setEmial] = useState('');
-    const [userName, setUserName] = useState('');
+    const [name, setName] = useState('');
     const [password, setPassword] = useState('');
 
     //variant que ira determiar a mensagem a ser exibida
@@ -20,13 +20,13 @@ const  Auth = () => {
         try {
             await axios.post('/api/register', {
                 email,
-                userName,
+                name,
                 password,
             });
         } catch(error) {
             console.log(error);
         }
-    },[email, userName, password])
+    },[email, name, password])
 
     return (
         <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -43,10 +43,10 @@ const  Auth = () => {
                             
                             {variant === 'register' && (
                                 <Input
-                                label="Username"
-                                onChange={(ev: any) => setUserName(ev.target.value)}
-                                id="userName"
-                                value={userName}
+                                label="name"
+                                onChange={(ev: any) => setName(ev.target.value)}
+                                id="name"
+                                value={name}
                                 />
                             )}
                 

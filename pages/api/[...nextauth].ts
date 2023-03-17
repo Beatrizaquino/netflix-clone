@@ -1,7 +1,7 @@
-import NextAuth from "next-auth/next";
+import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import {compare} from 'bcrypt';
-import prismadb from '@/lib/prismadb';
+import prismadb from '@/libs/prismadb';
 
 
 export default NextAuth({
@@ -42,7 +42,7 @@ export default NextAuth({
 
                 return user;
             }
-        }),
+        })
     ],
     pages: {
         signIn: '/auth',
@@ -56,4 +56,4 @@ export default NextAuth({
     },
     secret: process.env.NEXTAUTH_SECRET,
 
-})
+});

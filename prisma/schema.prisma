@@ -20,7 +20,7 @@ model User {
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
   favoriteIds String[] @db.ObjectId
-  sesions Sesion[]
+  sessions Session[]
   account Account[]
 }
 
@@ -43,7 +43,7 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-model Sesion {
+model Session {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   sessionToken String @unique 
   userId String @db.ObjectId 
