@@ -3,16 +3,16 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import prismadb from '@/libs/prismadb';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== 'POST') {
+    return res.status(405).end();
+  }
   try {
-    if (req.method !== 'POST') {
-      return res.status(405).end();
-    }
 
     const { email, name, password } = req.body;
 
     const existingUser = await prismadb.user.findUnique({
       where: {
-        email
+        email,
       }
     })
 
